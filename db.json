@@ -1,5 +1,21 @@
 {
     "computadoras":[
         
-    ]
+    ],
+  "usuarios": [
+    {
+      "id": "alumno01",
+      "password": "1234",
+      "role": "estudiante"
+    },
+    {
+      "id": "admin01",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ] ,
+  "permisos": []
 }
+
+
+
