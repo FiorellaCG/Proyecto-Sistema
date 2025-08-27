@@ -1,57 +1,52 @@
-
-
-//REALIZAR CAMBIOS AL PUT Y DEMAS 
-
-
-async function getComputadoras() {
+async function getComputadoras(endpoint) {
     try {
-        const response = await fetch('http://localhost:3001/computadoras', {
+        const response = await fetch(`http://localhost:3001/${endpoint}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
         })
 
-        const pelicula = await response.json()
-        return pelicula
+        const compu = await response.json()
+        return compu
 
     } catch (error) {
-        console.error('Hay un error al obtener peliculas:', error);
+        console.error('Hay un error al obtener computadoras:', error);
         throw error;
     }
 }
 
-async function postComputadoras(compus) {
+async function postComputadoras(endpoint,computadoras,usuarios) {
     try {
-        const response = await fetch("http://localhost:3001/computadoras", {
+        const response = await fetch(`http://localhost:3001/${endpoint}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(compus)
+            body: JSON.stringify(computadoras)
         })
 
-        const computadora = await response.json()
-        return computadora
+        const compu = await response.json()
+        return compu
 
     } catch (error) {
-        console.error("Hay un error al crear la pelicula ", error);
+        console.error("Hay un error al crear la computadora ", error);
         throw error
     }
 }
 
-async function putComputadoras(compus) {
+async function putComputadoras(endpoint, computadoras) {
     try {
-        const response = await fetch("http://localhost:3001/computadoras", {
+        const response = await fetch(`http://localhost:3001/${endpoint}`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(compus)
+            body: JSON.stringify(computadoras)
         })
 
-        const computadora = await response.json()
-        return computadora
+        const compu = await response.json()
+        return compu
 
     } catch (error) {
         console.error("Hay un error ", error);

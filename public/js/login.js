@@ -1,15 +1,17 @@
-import { postComputadoras } from "../services/services.js";
+import { postComputadoras } from "../services/services.js"
 
-//REALIZAR LOS GET ELEMENT
-
-//EVENTO PARA GUARDAR
+const userId = document.getElementById("userId");
+const contra = document.getElementById("contra");
+const guardarBtn = document.getElementById("guardarBtn");
 
 guardarBtn.addEventListener("click", async function () {
 
-    const compus = {
+    const usuarios = {
+        id: id.value,
+        contra: contra.value
           
     }
-    const respuestaConfirmada = await postPeliculas(compus)
+    const respuestaConfirmada = await postComputadoras(usuarios)
 
     alert("Usuario agregada correctamente", respuestaConfirmada)
 
