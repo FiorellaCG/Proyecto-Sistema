@@ -8,10 +8,10 @@
       "contra": "admin123",
       "rol": "admin"
     },
-    
+
     {
       "id": 2,
-      "username": "alumno01",
+      "username": "alumno",
       "contra": "alumno123",
       "rol": "alumno"
     }

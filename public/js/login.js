@@ -6,24 +6,9 @@ const btnEntrar = document.getElementById("btnEntrar");
 
 btnEntrar.addEventListener("click", async function () {
 
-    const usuarios = {
-        username: username.value,
-        contra: contra.value,
-        rol: rol.value
-    }
-    /*
-    if (rol.value === "Administrador") {
-      window.location.href = "/pages/admin.html"
-    } else if (rol.value === "Estudiante") {
-      window.location.href = "/pages/formulario.html"
-    } else {
-      window.location.href = "/pages/login.html"
-    }
-    */
-
-     if (username.value.startsWith("admin")) {
-      window.location.href = "/pages/admin.html"
-    } else if (rol.value === "alumno") {
+     if (username.value.startsWith ("admin")) {
+      window.location.href = "/pages/historial.html"
+    } else if (username.value.startsWith ("alumno")) {
       window.location.href = "/pages/formulario.html"
     } else {
       window.location.href = "/pages/login.html"

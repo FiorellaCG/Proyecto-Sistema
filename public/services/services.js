@@ -16,7 +16,7 @@ async function getComputadoras(endpoint) {
     }
 }
 
-async function postComputadoras(endpoint,computadoras,usuarios) {
+async function postComputadoras(endpoint,computadoras) {
     try {
         const response = await fetch(`http://localhost:3001/${endpoint}`, {
             method: "POST",
