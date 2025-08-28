@@ -1,12 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Préstamo de Computadora</title>
+
+  <!-- Link de Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    
+<body class="bg-light">
+  <div class="container py-4">
+    <h1 class="mb-4">Solicitud de Préstamo de Computadora</h1>
+
+    <form class="row g-3 needs-validation" novalidate>
+      <!-- Nombre o ID del usuario (prellenado) -->
+      <div class="col-md-6">
+        <label for="usuario" class="form-label">Nombre Completo</label>
+        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Ej. Juan Pérez" required />
+        <div class="invalid-feedback">Campo requerido.</div>
+      </div>
+
+      <!-- Sede -->
+      <div class="col-md-6">
+        <label for="sede" class="form-label">Sede</label>
+        <select id="sede" name="sede" class="form-select" required>
+          <option value="" selected disabled>Selecciona una sede…</option>
+          <option>San José</option>
+          <option>Puntarenas</option>
+          <option>Cartago</option>
+        </select>
+        <div class="invalid-feedback">Selecciona una sede.</div>
+      </div>
+
+      <!-- Fechas -->
+      <div class="col-md-6">
+        <label for="fechaSalida" class="form-label">Fecha de salida</label>
+        <input type="date" id="fechaSalida" name="fechaSalida" class="form-control" required />
+        <div class="invalid-feedback">Indica la fecha de salida.</div>
+      </div>
+      <div class="col-md-6">
+        <label for="fechaRegreso" class="form-label">Fecha de regreso</label>
+        <input type="date" id="fechaRegreso" name="fechaRegreso" class="form-control" required />
+        <div class="invalid-feedback">Indica la fecha de regreso.</div>
+      </div>
+
+      <!-- Código de la computadora -->
+      <div class="col-12">
+        <label for="codigoComputadora" class="form-label">Código de la computadora</label>
+        <input type="text" id="codigoComputadora" name="codigoComputadora" class="form-control" placeholder="Ej. 5CD4078D7J" required />
+        <div class="invalid-feedback">Ingresa el código del equipo.</div>
+      </div>
+
+      <!-- Aceptación de condiciones -->
+      <div class="col-12">
+        <label class="form-label d-block">Condiciones de uso</label>
+        <div class="border rounded p-3 bg-white" style="max-height: 220px; overflow:auto;">
+          <ul class="mb-0">
+            <li>Si viajas en transporte público, debes resguardar tu equipo en tu bolso personal, no exponerlo.</li>
+            <li>Si llevas el equipo, procura ir acompañado.</li>
+            <li>Si está lloviendo, procura llevar el equipo en un vehículo apropiado para evitar algún daño.</li>
+            <li>Evitar jugar, descargar o utilizar el equipo para otros motivos que no sean relacionados con el estudio.</li>
+            <li>El equipo será revisado antes y después de ser entregado. Cualquier alteración o incidencia podría resultar en la pérdida de privilegios.</li>
+            <li>Si retiras una computadora sin haber completado el formulario y la boleta física, podrás ser amonestado.</li>
+            <li>Este formulario debe llenarse junto con la boleta física, la cual debe estar firmada por la persona encargada.</li>
+          </ul>
+        </div>
+        <div class="form-check mt-2">
+          <input class="form-check-input" type="checkbox" value="1" id="aceptoCondiciones" required />
+          <label class="form-check-label" for="aceptoCondiciones">
+            He leído y acepto las condiciones de uso.
+          </label>
+          <div class="invalid-feedback">Debes aceptar las condiciones.</div>
+        </div>
+      </div>
+
+      <!-- Firma digital (opcional) -->
+      <div class="col-md-6">
+        <label for="firma" class="form-label">Firma del solicitante (opcional)</label>
+        <input class="form-control" type="file" id="firma" name="firma" accept="image/*,application/pdf" />
+        <div class="form-text">Puedes adjuntar una imagen o PDF con tu firma.</div>
+      </div>
+
+      <!-- Botones -->
+      <div class="col-12 d-flex gap-2">
+        <button type="button" class="btn btn-primary" id="btnGuardar">Enviar solicitud</button>
+        <button type="reset" class="btn btn-outline-secondary" >Limpiar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS + validación -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script type="module" src="../js/formulario.js"></script>
 </body>
 </html>

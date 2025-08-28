@@ -1,5 +1,27 @@
 {
-    "computadoras":[
-        
-    ]
+  "computadoras": [
+    {
+      "id": "86c1",
+      "nombre": "abc",
+      "sede": "Cartago",
+      "fechaSalida": "2025-08-09",
+      "fechaRegreso": "2025-09-07",
+      "aceptoCondiciones": true,
+      "codigoComputadora": "qhjyysysysy"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "username": "admin01",
+      "contra": "admin123",
+      "rol": "admin"
+    },
+    {
+      "id": "2",
+      "username": "alumno01",
+      "contra": "alumno123",
+      "rol": "alumno"
+    }
+  ]
 }
