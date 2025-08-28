@@ -1,19 +1,34 @@
-import { postComputadoras } from "../services/services.js"
+import { getComputadoras } from "../services/services.js"
 
-const userId = document.getElementById("userId");
-const contra = document.getElementById("contra");
-const guardarBtn = document.getElementById("guardarBtn");
+const username = document.getElementById("username")
+const contra = document.getElementById("contra")
+const btnEntrar = document.getElementById("btnEntrar");
 
-guardarBtn.addEventListener("click", async function () {
+btnEntrar.addEventListener("click", async function () {
 
     const usuarios = {
-        id: id.value,
-        contra: contra.value
-          
+        username: username.value,
+        contra: contra.value,
+        rol: rol.value
     }
-    const respuestaConfirmada = await postComputadoras(usuarios)
+    /*
+    if (rol.value === "Administrador") {
+      window.location.href = "/pages/admin.html"
+    } else if (rol.value === "Estudiante") {
+      window.location.href = "/pages/formulario.html"
+    } else {
+      window.location.href = "/pages/login.html"
+    }
+    */
 
-    alert("Usuario agregada correctamente", respuestaConfirmada)
-
+     if (username.value.startsWith("admin")) {
+      window.location.href = "/pages/admin.html"
+    } else if (rol.value === "alumno") {
+      window.location.href = "/pages/formulario.html"
+    } else {
+      window.location.href = "/pages/login.html"
+    }
+    
+    const respuestaConfirmada = await getComputadoras(usuarios)
     console.log(respuestaConfirmada)
 })

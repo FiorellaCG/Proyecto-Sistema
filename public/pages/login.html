@@ -20,20 +20,18 @@
             <form id="loginForm" novalidate>
               <!-- ID de usuario -->
               <div class="mb-3">
-                <label for="userId" class="form-label">ID de usuario</label>
-                <input type="text" class="form-control" id="userId" name="userId"
-                  placeholder="ej. alumno01" />
+                <label for="username" class="form-label">ID de usuario</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Ej. alumno01" />
               </div>
 
               <!-- Contraseña -->
               <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password"
-                  placeholder="contraseña" />
+                <label for="contra" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="contra" name="contra" placeholder="Contraseña" />
               </div>
 
               <!-- Botón centrado -->
-              <button type="button" class="btn btn-primary mt-3 d-block mx-auto" id="guardarBtn">Entrar</button>
+              <button type="button" class="btn btn-outline-primary mt-3 d-block mx-auto" id="btnEntrar">Entrar</button>
 
               <!-- Mensaje de error -->
               <div id="error" class="alert alert-danger d-none mt-3" role="alert"></div>

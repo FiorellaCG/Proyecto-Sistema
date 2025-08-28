@@ -1,5 +1,19 @@
 {
   "computadoras": [
   ],
-  "usuarios": []
+  "usuarios": [
+    {
+      "id": 1,
+      "username": "admin01",
+      "contra": "admin123",
+      "rol": "admin"
+    },
+    
+    {
+      "id": 2,
+      "username": "alumno01",
+      "contra": "alumno123",
+      "rol": "alumno"
+    }
+  ]
 }
