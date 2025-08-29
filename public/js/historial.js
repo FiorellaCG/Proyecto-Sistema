@@ -1,63 +1,5 @@
-/*let permisos = [];
 
-// 🔹 Cargar permisos desde JSON Server
-async function cargarPermisos() {
-  try {
-    const res = await fetch("http://localhost:3000/permisos");
-    permisos = await res.json(); 
-    mostrarPermisos(permisos);
-  } catch (error) {
-    console.error("Error al cargar permisos:", error);
-  }
-}
-
-// 🔹 Mostrar permisos en la tabla
-function mostrarPermisos(lista) {
-  const tabla = document.getElementById("tablaPermisos");
-  tabla.innerHTML = "";
-
-  if (lista.length === 0) {
-    tabla.innerHTML = `
-      <tr>
-        <td colspan="6" class="text-muted">⚠ No se encontraron permisos</td>
-      </tr>
-    `;
-    return;
-  }
-
-  lista.forEach(p => {
-    const fila = document.createElement("tr");
-    fila.innerHTML = `
-      <td>${p.nombre}</td>
-      <td>${p.fechaSalida || "-"}</td>
-      <td>${p.fechaRegreso || "-"}</td>
-      <td>${p.computadora}</td>
-      <td>
-        <span class="badge ${p.estado === "Aprobado" ? "bg-success" : p.estado === "Rechazado" ? "bg-danger" : "bg-warning text-dark"}">
-          ${p.estado || "Pendiente"}
-        </span>
-      </td>
-    `;
-    tabla.appendChild(fila);
-  });
-}
-
-// 🔹 Filtrar permisos con la barra de búsqueda
-document.getElementById("busqueda").addEventListener("input", (e) => {
-  const texto = e.target.value.toLowerCase();
-  const filtrados = permisos.filter(p =>
-    p.nombre.toLowerCase().includes(texto) ||
-    p.motivo.toLowerCase().includes(texto) ||
-    p.computadora.toLowerCase().includes(texto)
-  );
-  mostrarPermisos(filtrados);
-});
-
-// 🔹 Ejecutar la carga al abrir la página
-cargarPermisos();
-*/
-
-import { getComputadoras } from "../services/services.js";
+/*import { getComputadoras } from "../services/services.js";
 
 const tablaPermisos = document.getElementById("tablaPermisos");
 
@@ -89,8 +31,59 @@ async function datosComputadoras() {
 }
 datosComputadoras()
 
+*/
+import { getComputadoras } from "../services/services.js";
 
+const tablaPermisos = document.getElementById("tablaPermisos");
+const inputBusqueda = document.getElementById("busqueda");
 
+let datosComputadorasRecibidas = [];
 
+// Cargar datos
+async function datosComputadoras() {
+  try {
+    datosComputadorasRecibidas = await getComputadoras("computadoras");
+    mostrarTabla(datosComputadorasRecibidas);
+    console.log(datosComputadorasRecibidas);
+  } catch (error) {
+    console.error("Error al cargar computadoras:", error);
+  }
+}
 
+// 🔹 Mostrar datos en la tabla
+function mostrarTabla(lista) {
+  tablaPermisos.innerHTML = ""; // limpiar antes de volver a pintar
 
+  lista.forEach(compu => {
+    const fila = document.createElement("tr");
+
+    fila.innerHTML = `
+      <td>${compu.nombre}</td>
+      <td>${compu.fechaSalida}</td>
+      <td>${compu.fechaRegreso}</td>
+      <td>${compu.codigoComputadora}</td>
+      <td>
+        <span class="badge ${compu.estado === "Activo" ? "bg-success" : "bg-danger"}">
+          ${compu.estado}
+        </span>
+      </td>
+    `;
+
+    tablaPermisos.appendChild(fila);
+  });
+}
+
+// Filtro de búsqueda
+inputBusqueda.addEventListener("input", (e) => {
+  const texto = e.target.value.toLowerCase();
+  const filtrados = datosComputadorasRecibidas.filter(compu =>
+    compu.nombre.toLowerCase().includes(texto) ||
+    compu.computadora.toLowerCase().includes(texto) ||
+    (compu.motivo ? compu.motivo.toLowerCase().includes(texto) : false) ||
+    compu.estado.toLowerCase().includes(texto)
+  );
+  mostrarTabla(filtrados);
+});
+
+// Inicializar
+datosComputadoras();

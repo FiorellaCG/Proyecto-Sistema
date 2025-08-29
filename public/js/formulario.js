@@ -49,7 +49,8 @@ btnGuardar.addEventListener("click", async function (event) {
     fechaSalida: fechaSalida.value,        
     fechaRegreso: fechaRegreso.value,      
     aceptoCondiciones: aceptoCondiciones.checked,
-    codigoComputadora: codigoComputadora.value
+    codigoComputadora: codigoComputadora.value,
+    estado: estado.value
   };
 
   const respuestaConfirmada = await postComputadoras("computadoras", computadoras);
