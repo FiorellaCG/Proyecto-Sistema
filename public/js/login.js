@@ -7,7 +7,7 @@ const btnEntrar = document.getElementById("btnEntrar");
 btnEntrar.addEventListener("click", async function () {
 
      if (username.value.startsWith ("admin")) {
-      window.location.href = "/pages/historial.html"
+      window.location.href = "/pages/admin.html"
     } else if (username.value.startsWith ("alumno")) {
       window.location.href = "/pages/formulario.html"
     } else {

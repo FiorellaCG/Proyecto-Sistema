@@ -1,19 +1,33 @@
 {
   "computadoras": [
+    {
+      "id": "1857",
+      "nombre": "a",
+      "sede": "Puntarenas",
+      "fechaSalida": "2025-08-03",
+      "fechaRegreso": "2025-08-30",
+      "aceptoCondiciones": true,
+      "codigoComputadora": "pan"
+    }
   ],
   "usuarios": [
     {
-      "id": 1,
-      "username": "admin01",
-      "contra": "admin123",
-      "rol": "admin"
+      "id": "af7e",
+      "username": "Fiorella Chaves Gonzalez",
+      "contra": "hola",
+      "rol": ""
     },
-
     {
-      "id": 2,
-      "username": "alumno",
-      "contra": "alumno123",
-      "rol": "alumno"
+      "id": "7851",
+      "username": "Fiorella Chaves Gonzalez",
+      "contra": "pan",
+      "rol": "Alumno"
+    },
+    {
+      "id": "f867",
+      "username": "Fiorella Chaves Gonzalez",
+      "contra": "hola",
+      "rol": "Alumno"
     }
   ]
 }
