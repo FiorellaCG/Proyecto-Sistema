@@ -50,12 +50,20 @@ btnGuardar.addEventListener("click", async function (event) {
     fechaSalida: fechaSalida.value,        
     fechaRegreso: fechaRegreso.value,      
     aceptoCondiciones: aceptoCondiciones.checked,
-    codigoComputadora: codigoComputadora.value
+    codigoComputadora: codigoComputadora.value,
+    estado: "pendiente",
+    fechaDecision: null,
+    motivoRechazo: null
   };
 
-  const respuestaConfirmada = await postComputadoras("computadoras", computadoras);
+  try {
+    const respuestaConfirmada = await postComputadoras("computadoras", computadoras);
+    alert("La solicitud ha sido registrada");
+    console.log(respuestaConfirmada);
+  } catch (error) {
+    alert("Error al guardar la solicitud");
+  }
 
-  alert("La solicitud ha sido exitosa");
-  console.log(respuestaConfirmada);
+
 });
 

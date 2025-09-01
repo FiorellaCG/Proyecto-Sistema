@@ -14,6 +14,7 @@
   />
 </head>
 <body class="bg-light">
+  <!-- Barra de navegación -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">Sistema de Computadoras — Administrador</a>
@@ -36,7 +37,7 @@
 
   <main class="container my-4">
 
-    <!-- Crear nuevo usuario administrador -->
+    <!-- Crear nuevo usuario -->
     <section class="mb-4">
       <div class="card shadow-sm">
         <div class="card-header">
@@ -88,10 +89,26 @@
                   <th>Cód. PC</th>
                   <th>Salida</th>
                   <th>Regreso</th>
-                  <th>Estado</th> <!-- Aquí va el botón de decidir -->
+                  <th>Estado</th> <!-- Aquí es donde agregamos los botones -->
                 </tr>
               </thead>
-              <tbody><!-- filas dinámicas --></tbody>
+              <tbody>
+                <!-- Ejemplo de fila estática con botones Aceptar/Rechazar -->
+                <tr>
+                  <td>1</td>
+                  <td>Juan Pérez</td>
+                  <td>San José</td>
+                  <td>PC-01</td>
+                  <td>2025-09-05</td>
+                  <td>2025-09-10</td>
+                  <td>
+                    <!-- 🔹 BOTONES ACEPTAR/RECHAZAR -->
+                    <button class="btn btn-success btn-sm">Aceptar</button>
+                    <button class="btn btn-danger btn-sm">Rechazar</button>
+                  </td>
+                </tr>
+                <!-- 🔹 Las demás filas dinámicas se crearán con JS -->
+              </tbody>
             </table>
           </div>
           <p id="sinPendientes" class="text-muted my-3 d-none">
@@ -102,27 +119,6 @@
     </section>
   </main>
 
-  <!-- Modal Rechazo: pedir motivo -->
-  <div class="modal fade" id="modalRechazo" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <form class="modal-content" id="formRechazo">
-        <div class="modal-header">
-          <h5 class="modal-title">Rechazar solicitud</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="rechazoId" />
-          <label for="motivoRechazo" class="form-label">Motivo de rechazo (opcional, pero recomendado)</label>
-          <textarea id="motivoRechazo" class="form-control" rows="3" placeholder="Escribe el motivo..."></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-danger">Rechazar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- Bootstrap JS -->
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -131,7 +127,8 @@
   ></script>
 
   <!-- App -->
-   <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/admin.js"></script>
 </body>
 </html>
+
 

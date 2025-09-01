@@ -1,13 +1,40 @@
 {
   "computadoras": [
     {
-      "id": "1857",
-      "nombre": "a",
-      "sede": "Puntarenas",
-      "fechaSalida": "2025-08-03",
-      "fechaRegreso": "2025-08-30",
+      "id": "13a1",
+      "nombre": "flora",
+      "sede": "San José",
+      "fechaSalida": "2025-10-05",
+      "fechaRegreso": "2025-10-31",
       "aceptoCondiciones": true,
-      "codigoComputadora": "pan"
+      "codigoComputadora": "flor",
+      "estado": "aprobada",
+      "fechaDecision": "2025-09-01T15:03:23.188Z",
+      "motivoRechazo": null
+    },
+    {
+      "id": "628d",
+      "nombre": "Marta",
+      "sede": "Puntarenas",
+      "fechaSalida": "",
+      "fechaRegreso": "",
+      "aceptoCondiciones": true,
+      "codigoComputadora": "PC01",
+      "estado": "rechazada",
+      "fechaDecision": "2025-09-01T15:04:45.415Z",
+      "motivoRechazo": "No tiene fechas"
+    },
+    {
+      "id": "eaef",
+      "nombre": "Juan",
+      "sede": "Cartago",
+      "fechaSalida": "2025-09-25",
+      "fechaRegreso": "2025-09-30",
+      "aceptoCondiciones": true,
+      "codigoComputadora": "PC02",
+      "estado": "pendiente",
+      "fechaDecision": null,
+      "motivoRechazo": null
     }
   ],
   "usuarios": [

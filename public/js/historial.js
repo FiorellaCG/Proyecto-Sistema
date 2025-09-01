@@ -1,10 +1,9 @@
 import { getComputadoras } from "../services/services.js";
-
 const tablaPermisos = document.getElementById("tablaPermisos");
 const inputBusqueda = document.getElementById("busqueda");
 let datosComputadorasRecibidas = [];
 
-//  Cargar datos
+// :diamante_azul_pequeño: Cargar datos
 async function datosComputadoras() {
   try {
     datosComputadorasRecibidas = await getComputadoras("computadoras");
@@ -16,7 +15,7 @@ async function datosComputadoras() {
 }
 //  Mostrar datos en la tabla
 function mostrarTabla(lista) {
-  tablaPermisos.innerHTML = ""; 
+  tablaPermisos.innerHTML = ""; // limpiar antes de volver a pintar
   lista.forEach(compu => {
     const fila = document.createElement("tr");
     fila.innerHTML = `
@@ -47,6 +46,5 @@ inputBusqueda.addEventListener("input", (e) => {
 
   mostrarTabla(filtrados);
 });
-
-//: Inicializar
+// :diamante_azul_pequeño: Inicializar
 datosComputadoras();

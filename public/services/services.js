@@ -37,25 +37,24 @@ async function postComputadoras(endpoint, datos) {
         throw error
     }
 }
-//Put
+
 async function putComputadoras(endpoint, computadoras) {
     try {
-        const response = await fetch(`http://localhost:3001/${endpoint}`, {
-            method: "PUT",
+        const response = await fetch(`http://localhost:3001/${endpoint}/`+id, {
+            method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(computadoras)
         })
 
-        const compu = await response.json()
-        return compu
+        if (!response.ok) throw new Error("Error en POST: " + response.status);
+
+        return await response.json();
 
     } catch (error) {
-        console.error("Hay un error ", error);
+        console.error("Hay un error al crear en "+ endpoint, error);
         throw error
     }
 }
-
 
 export { getComputadoras, postComputadoras, putComputadoras }
