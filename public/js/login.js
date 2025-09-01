@@ -4,6 +4,7 @@ const username = document.getElementById("username")
 const contra = document.getElementById("contra")
 const btnEntrar = document.getElementById("btnEntrar");
 
+//valida si el usario y contraseña son correctos
 btnEntrar.addEventListener("click", async function () {
 
      if (username.value.startsWith ("admin")) {

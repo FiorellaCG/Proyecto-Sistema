@@ -1,3 +1,4 @@
+//Get
 async function getComputadoras(endpoint) {
     try {
         const response = await fetch(`http://localhost:3001/${endpoint}`, {
@@ -16,6 +17,7 @@ async function getComputadoras(endpoint) {
     }
 }
 
+//Post
 async function postComputadoras(endpoint, datos) {
     try {
         const response = await fetch(`http://localhost:3001/${endpoint}`, {
@@ -35,7 +37,7 @@ async function postComputadoras(endpoint, datos) {
         throw error
     }
 }
-
+//Put
 async function putComputadoras(endpoint, computadoras) {
     try {
         const response = await fetch(`http://localhost:3001/${endpoint}`, {

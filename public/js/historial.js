@@ -4,7 +4,7 @@ const tablaPermisos = document.getElementById("tablaPermisos");
 const inputBusqueda = document.getElementById("busqueda");
 let datosComputadorasRecibidas = [];
 
-// :diamante_azul_pequeño: Cargar datos
+//  Cargar datos
 async function datosComputadoras() {
   try {
     datosComputadorasRecibidas = await getComputadoras("computadoras");
@@ -14,9 +14,9 @@ async function datosComputadoras() {
     console.error("Error al cargar computadoras:", error);
   }
 }
-// :diamante_azul_pequeño: Mostrar datos en la tabla
+//  Mostrar datos en la tabla
 function mostrarTabla(lista) {
-  tablaPermisos.innerHTML = ""; // limpiar antes de volver a pintar
+  tablaPermisos.innerHTML = ""; 
   lista.forEach(compu => {
     const fila = document.createElement("tr");
     fila.innerHTML = `
@@ -33,16 +33,20 @@ function mostrarTabla(lista) {
     tablaPermisos.appendChild(fila);
   });
 }
-// :diamante_azul_pequeño: Filtro de búsqueda
+// Filtro de búsqueda
 inputBusqueda.addEventListener("input", (e) => {
   const texto = e.target.value.toLowerCase();
+
   const filtrados = datosComputadorasRecibidas.filter(compu =>
-    compu.nombre.toLowerCase().includes(texto) ||
-    compu.computadora.toLowerCase().includes(texto) ||
-    (compu.motivo ? compu.motivo.toLowerCase().includes(texto) : false) ||
-    compu.estado.toLowerCase().includes(texto)
+    (compu.nombre?.toLowerCase().includes(texto)) ||
+    (compu.codigoComputadora?.toLowerCase().includes(texto)) ||
+    (compu.fechaSalida?.toLowerCase().includes(texto)) ||
+    (compu.fechaRegreso?.toLowerCase().includes(texto)) ||
+    (compu.estado?.toLowerCase().includes(texto))
   );
+
   mostrarTabla(filtrados);
 });
-// :diamante_azul_pequeño: Inicializar
+
+//: Inicializar
 datosComputadoras();

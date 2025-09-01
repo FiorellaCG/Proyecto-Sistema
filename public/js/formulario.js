@@ -43,6 +43,7 @@ btnGuardar.addEventListener("click", async function (event) {
     return; // detiene la ejecución
   }
 
+  //objeto
   const computadoras = {
     nombre: usuario.value,                
     sede: sede.value,
