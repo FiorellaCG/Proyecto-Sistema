@@ -1,35 +1,6 @@
 {
   "computadoras": [
-    {
-      "id": "13a1",
-      "nombre": "flora",
-      "sede": "San José",
-      "fechaSalida": "2025-10-05",
-      "fechaRegreso": "2025-10-31",
-      "aceptoCondiciones": true,
-      "codigoComputadora": "flor",
-      "estado": "aprobada",
-      "fechaDecision": "2025-09-01T15:03:23.188Z",
-      "motivoRechazo": null
-    },
-    {
-      "id": "628d",
-      "nombre": "Marta",
-      "sede": "Puntarenas",
-      "fechaSalida": "",
-      "fechaRegreso": "",
-      "aceptoCondiciones": true,
-      "codigoComputadora": "PC01",
-      "estado": "rechazada",
-      "fechaDecision": "2025-09-01T15:04:45.415Z",
-      "motivoRechazo": "No tiene fechas"
-    },
-    {
-      "estado": "aprobada",
-      "fechaDecision": "2025-09-01T17:13:53.072Z",
-      "motivoRechazo": null,
-      "id": "eaef"
-    }
+   
   ],
   "usuarios": [
     {
@@ -39,21 +10,15 @@
       "rol": "Administrador"
     },
     {
-      "id": "af7e",
+      "id": "2",
       "username": "Fiorella Chaves Gonzalez",
       "contra": "hola",
-      "rol": ""
+      "rol": "Alumno"
     },
     {
-      "id": "7851",
+      "id": "3",
       "username": "Fiorella Chaves Gonzalez",
       "contra": "pan",
-      "rol": "alumno"
-    },
-    {
-      "id": "4112",
-      "username": "admin02",
-      "contra": "pancito",
       "rol": "Profesor"
     }
   ]
