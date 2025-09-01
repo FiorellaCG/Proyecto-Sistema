@@ -55,6 +55,18 @@
       "username": "admin02",
       "contra": "pancito",
       "rol": "Profesor"
+    },
+    {
+      "id": "70f1",
+      "username": "admin01",
+      "contra": "hghahgsgsh",
+      "rol": "Administrador"
+    },
+    {
+      "id": "3266",
+      "username": "admin01",
+      "contra": "Hola2",
+      "rol": "Profesor"
     }
   ]
 }
