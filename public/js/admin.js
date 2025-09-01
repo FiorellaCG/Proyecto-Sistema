@@ -1,11 +1,11 @@
-// Importacion de servicios
+// Importa helpers del servicio
 import {
   getComputadoras,
   postComputadoras,
   putComputadoras,
 } from "../services/services.js";
-
 // Sección: Crear usuario
+
 const username = document.getElementById("username");
 const contra   = document.getElementById("contra");
 const rol      = document.getElementById("rol");
@@ -38,7 +38,6 @@ btnCrear.addEventListener("click", async (event) => {
     alert("No se pudo crear el usuario. Revisa la consola.");
   }
 });
-// Sección: Aprobación de Solicitudes
 
 const tablaPendientesBody = document.querySelector("#tablaPendientes tbody");
 const sinPendientesMsg    = document.getElementById("sinPendientes");
@@ -51,7 +50,7 @@ async function cargarSolicitudes() {
     solicitudes = await getComputadoras("computadoras");
 
     // Filtrar solo pendientes
-    const pendientes = solicitudes.filter(s => s.estado === "pendiente");
+    const pendientes = solicitudes.filter((s) => s.estado === "pendiente");
     pintarTabla(pendientes);
   } catch (error) {
     console.error("Error al cargar computadoras:", error);
@@ -93,9 +92,7 @@ function pintarTabla(lista) {
   });
 }
 
-/**
- * Aceptar: actualiza estado en db.json y elimina la fila de la tabla.
- */
+
 async function aceptarSolicitud(id, boton) {
   try {
     if (boton) {
@@ -109,7 +106,7 @@ async function aceptarSolicitud(id, boton) {
       motivoRechazo: null,
     });
 
-    // 🔹 Eliminar fila de la tabla directamente
+    // Eliminar fila de la tabla directamente
     const fila = boton.closest("tr");
     if (fila) fila.remove();
 
@@ -120,9 +117,7 @@ async function aceptarSolicitud(id, boton) {
   }
 }
 
-/**
- * Rechazar: actualiza estado en db.json y elimina la fila de la tabla.
- */
+
 async function rechazarSolicitud(id, motivo, boton) {
   try {
     if (boton) {
@@ -136,7 +131,7 @@ async function rechazarSolicitud(id, motivo, boton) {
       motivoRechazo: motivo || "Sin especificar",
     });
 
-    // 🔹 Eliminar fila de la tabla directamente
+    // Eliminar fila de la tabla directamente
     const fila = boton.closest("tr");
     if (fila) fila.remove();
 
@@ -148,12 +143,13 @@ async function rechazarSolicitud(id, motivo, boton) {
 }
 
 
+ //Si ya no quedan filas en la tabla, mostrar mensaje "No hay pendientes".
+ 
 function verificarPendientesVacios() {
   if (tablaPendientesBody.children.length === 0) {
     if (sinPendientesMsg) sinPendientesMsg.classList.remove("d-none");
   }
 }
-
 
 tablaPendientesBody.addEventListener("click", async (e) => {
   const btnAceptar  = e.target.closest(".btn-aceptar");

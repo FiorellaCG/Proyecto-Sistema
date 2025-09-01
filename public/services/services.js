@@ -38,23 +38,19 @@ async function postComputadoras(endpoint, datos) {
     }
 }
 
-async function putComputadoras(endpoint, computadoras) {
-    try {
-        const response = await fetch(`http://localhost:3001/${endpoint}/`+id, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-
-        if (!response.ok) throw new Error("Error en POST: " + response.status);
-
-        return await response.json();
-
-    } catch (error) {
-        console.error("Hay un error al crear en "+ endpoint, error);
-        throw error
-    }
+async function putComputadoras(endpoint, id, datos) {
+  try {
+    const response = await fetch(`http://localhost:3001/${endpoint}/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos),
+    });
+    if (!response.ok) throw new Error("Error al actualizar");
+    return await response.json();
+  } catch (error) {
+    console.error("Hay un error al actualizar:", error);
+    throw error;
+  }
 }
 
 export { getComputadoras, postComputadoras, putComputadoras }
