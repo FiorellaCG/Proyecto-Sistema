@@ -44,15 +44,8 @@ async function putComputadoras(endpoint, id, datos) {
     const getRes = await fetch(`http://localhost:3001/${endpoint}/${id}`);
     if (!getRes.ok) throw new Error("Error al leer el recurso actual");
     const actual = await getRes.json();
-<<<<<<< HEAD
     // 2) Combinar los datos nuevos con los existentes
     const cuerpo = { ...actual, ...datos };
-=======
-
-    // 2) Combinar los datos nuevos con los existentes
-    const cuerpo = { ...actual, ...datos };
-
->>>>>>> 72a6d2796ed2a8984405316f69365f04a28e3f5a
     // 3) Enviar PUT con el objeto completo
     const response = await fetch(`http://localhost:3001/${endpoint}/${id}`, {
       method: "PATCH",
