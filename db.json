@@ -1,21 +1,23 @@
 {
-    "computadoras":[
-        
-    ],
+  "computadoras": [],
   "usuarios": [
     {
-      "id": "alumno01",
-      "password": "1234",
-      "role": "estudiante"
+      "id": "7faa",
+      "username": "Barry",
+      "contra": "12345",
+      "rol": "Administrador"
     },
     {
-      "id": "admin01",
-      "password": "admin123",
-      "role": "admin"
+      "id": "c02c",
+      "username": "Jeanca",
+      "contra": "12345",
+      "rol": "Profesor"
+    },
+    {
+      "id": "900b",
+      "username": "Noelia",
+      "contra": "12345",
+      "rol": "Alumno"
     }
-  ] ,
-  "permisos": []
+  ]
 }
-
-
-
