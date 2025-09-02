@@ -92,7 +92,7 @@ function pintarTabla(lista) {
   });
 }
 
-
+// funcion para aceptar la solicitud
 async function aceptarSolicitud(id, boton) {
   try {
     if (boton) {
@@ -117,7 +117,7 @@ async function aceptarSolicitud(id, boton) {
   }
 }
 
-
+//funcion para rechazar la solicitud
 async function rechazarSolicitud(id, motivo, boton) {
   try {
     if (boton) {

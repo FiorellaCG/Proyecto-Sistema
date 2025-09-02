@@ -1,4 +1,4 @@
-import { getComputadoras } from "../services/services.js";
+import { getComputadoras, eliminarUsuario } from "../services/services.js";
 
 // Elementos del DOM
 const tablaUsuarios = document.getElementById("tablaUsuarios");
@@ -28,8 +28,28 @@ function mostrarUsuarios(usuarios) {
       <td>${usuario.id ?? ""}</td>
       <td>${usuario.username ?? ""}</td>
       <td>${usuario.rol ?? ""}</td>
+      <td>
+        <button class="btn-eliminar btn btn-danger" data-id="${usuario.id}">
+          Eliminar
+        </button>
+      </td>
     `;
     tablaUsuarios.appendChild(fila);
+  });
+
+  // Botones de eliminar
+  document.querySelectorAll(".btn-eliminar").forEach(btn => {
+    btn.addEventListener("click", async (e) => {
+      const id = e.currentTarget.dataset.id;   
+      try {
+        await eliminarUsuario(id);
+        await cargarUsuarios();             
+        alert("Usuario eliminado correctamente");
+      } catch (error) {
+        console.error("Error al eliminar usuario:", error);
+        alert("No se pudo eliminar el usuario");
+      }
+    });
   });
 }
 
