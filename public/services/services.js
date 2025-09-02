@@ -40,17 +40,29 @@ async function postComputadoras(endpoint, datos) {
 
 async function putComputadoras(endpoint, id, datos) {
   try {
+    // 1) Obtener el registro actual
+    const getRes = await fetch(`http://localhost:3001/${endpoint}/${id}`);
+    if (!getRes.ok) throw new Error("Error al leer el recurso actual");
+    const actual = await getRes.json();
+
+    // 2) Combinar los datos nuevos con los existentes
+    const cuerpo = { ...actual, ...datos };
+
+    // 3) Enviar PUT con el objeto completo
     const response = await fetch(`http://localhost:3001/${endpoint}/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(datos),
+      body: JSON.stringify(cuerpo),
     });
+
     if (!response.ok) throw new Error("Error al actualizar");
     return await response.json();
+
   } catch (error) {
-    console.error("Hay un error al actualizar:", error);
+    console.error("Hay un error al actualizar en putComputadoras:", error);
     throw error;
   }
 }
+
 
 export { getComputadoras, postComputadoras, putComputadoras }
