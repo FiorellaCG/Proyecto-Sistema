@@ -1,35 +1,40 @@
-// Importa helpers del servicio
+// Importa helpers del servicio para hacer peticiones al servidor
 import {
   getComputadoras,
   postComputadoras,
   putComputadoras,
 } from "../services/services.js";
-// Sección: Crear usuario
 
+// Sección: Crear usuario
 const username = document.getElementById("username");
 const contra   = document.getElementById("contra");
 const rol      = document.getElementById("rol");
 const btnCrear = document.getElementById("btnCrear");
 
+// Evento para crear usuario cuando se da clic en el botón
 btnCrear.addEventListener("click", async (event) => {
-  event.preventDefault();
+  event.preventDefault(); // Evita recargar la página
 
+  // Construir objeto con la información del formulario
   const usuario = {
     username: username.value.trim(),
     contra:   contra.value.trim(),
     rol:      rol.value,
   };
 
+  // Validar que los campos no estén vacíos
   if (!usuario.username || !usuario.contra || !usuario.rol) {
     alert("Completa usuario, contraseña y rol.");
     return;
   }
 
   try {
+    // Enviar usuario al servidor
     const resp = await postComputadoras("usuarios", usuario);
     console.log("Usuario creado:", resp);
     alert("La creación ha sido exitosa");
-    // Limpia formulario
+
+    // Limpiar formulario
     username.value = "";
     contra.value   = "";
     rol.value      = "";
@@ -39,17 +44,18 @@ btnCrear.addEventListener("click", async (event) => {
   }
 });
 
+// Elementos de la tabla de solicitudes pendientes
 const tablaPendientesBody = document.querySelector("#tablaPendientes tbody");
 const sinPendientesMsg    = document.getElementById("sinPendientes");
 
 let solicitudes = [];
 
-
+// Cargar solicitudes desde el servidor
 async function cargarSolicitudes() {
   try {
     solicitudes = await getComputadoras("computadoras");
 
-    // Filtrar solo pendientes
+    // Filtrar solo las que están en estado pendiente
     const pendientes = solicitudes.filter((s) => s.estado === "pendiente");
     pintarTabla(pendientes);
   } catch (error) {
@@ -62,16 +68,18 @@ async function cargarSolicitudes() {
   }
 }
 
-
+// Función que pinta la tabla con los datos
 function pintarTabla(lista) {
   tablaPendientesBody.innerHTML = "";
 
+  // Si no hay elementos en la lista, mostrar mensaje
   if (!Array.isArray(lista) || lista.length === 0) {
     if (sinPendientesMsg) sinPendientesMsg.classList.remove("d-none");
     return;
   }
   if (sinPendientesMsg) sinPendientesMsg.classList.add("d-none");
 
+  // Crear filas de la tabla con la información de cada computadora
   lista.forEach((compu) => {
     const fila = document.createElement("tr");
     fila.innerHTML = `
@@ -92,7 +100,7 @@ function pintarTabla(lista) {
   });
 }
 
-// funcion para aceptar la solicitud
+// Función para aceptar la solicitud
 async function aceptarSolicitud(id, boton) {
   try {
     if (boton) {
@@ -100,13 +108,14 @@ async function aceptarSolicitud(id, boton) {
       boton.textContent = "Guardando…";
     }
 
+    // Actualizar en el servidor el estado de la solicitud
     await putComputadoras("computadoras", id, {
       estado: "aprobada",
       fechaDecision: new Date().toISOString(),
       motivoRechazo: null,
     });
 
-    // Eliminar fila de la tabla directamente
+    // Eliminar la fila de la tabla
     const fila = boton.closest("tr");
     if (fila) fila.remove();
 
@@ -117,7 +126,7 @@ async function aceptarSolicitud(id, boton) {
   }
 }
 
-//funcion para rechazar la solicitud
+// Función para rechazar la solicitud
 async function rechazarSolicitud(id, motivo, boton) {
   try {
     if (boton) {
@@ -125,13 +134,14 @@ async function rechazarSolicitud(id, motivo, boton) {
       boton.textContent = "Guardando…";
     }
 
+    // Actualizar en el servidor el estado a rechazada
     await putComputadoras("computadoras", id, {
       estado: "rechazada",
       fechaDecision: new Date().toISOString(),
       motivoRechazo: motivo || "Sin especificar",
     });
 
-    // Eliminar fila de la tabla directamente
+    // Eliminar la fila de la tabla
     const fila = boton.closest("tr");
     if (fila) fila.remove();
 
@@ -142,15 +152,14 @@ async function rechazarSolicitud(id, motivo, boton) {
   }
 }
 
-
- //Si ya no quedan filas en la tabla, mostrar mensaje "No hay pendientes".
- 
+// Si ya no quedan filas en la tabla, mostrar mensaje "No hay pendientes"
 function verificarPendientesVacios() {
   if (tablaPendientesBody.children.length === 0) {
     if (sinPendientesMsg) sinPendientesMsg.classList.remove("d-none");
   }
 }
 
+// Delegación de eventos para los botones de la tabla
 tablaPendientesBody.addEventListener("click", async (e) => {
   const btnAceptar  = e.target.closest(".btn-aceptar");
   const btnRechazar = e.target.closest(".btn-rechazar");
@@ -166,4 +175,6 @@ tablaPendientesBody.addEventListener("click", async (e) => {
     await rechazarSolicitud(id, motivo, btnRechazar);
   }
 });
+
+// Llamar a la carga inicial de solicitudes
 cargarSolicitudes();
