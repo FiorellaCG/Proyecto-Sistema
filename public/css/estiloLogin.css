@@ -1,11 +1,14 @@
+
+  body {
+    background: url('../img/Fondo.gif') no-repeat center center fixed;
+    background-size: cover;
+  }
+
 body {
       background-color: #f0f4f8; /* ligero color de fondo */
     }
 
-    .card {
-      background-color: #ffffffcc; /* tarjeta semi-transparente */
-      border-radius: 1rem;
-    }
+    
 
     #logo {
       display: block;
